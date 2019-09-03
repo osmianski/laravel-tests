@@ -32,13 +32,13 @@ class TestInstantiation extends Command
 
     public function handle()
     {
-        $this->measure('Automatic resolution (0 dependencies)', function() {
+        $this->measure('Automatic resolution from DI container (0 dependencies)', function() {
             for ($i = 0; $i < $this->count; $i++) {
-                app(SampleService::class);
+                $object = app(SampleService::class);
             }
         });
 
-        $this->measure('Automatic resolution (2 dependencies)', function() {
+        $this->measure('Automatic resolution from DI container (2 dependencies)', function() {
             for ($i = 0; $i < $this->count; $i++) {
                 $object = app(DependentService::class);
             }
